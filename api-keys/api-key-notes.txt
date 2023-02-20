@@ -1,0 +1,6 @@
+Note that the Marvel API Info can be found here:
+
+https://developer.marvel.com/account
+https://developer.marvel.com/docs#!/public/getCreatorCollection_get_0
+https://developer.marvel.com/documentation/authorization
+
