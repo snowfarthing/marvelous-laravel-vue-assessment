@@ -15,13 +15,21 @@ use Illuminate\Support\Facades\Http;
 |
 */
 
+
+// Constants for search
+define('MAX_ARGUMENT_LENGTH', getenv('MAX_ARGUMENT_LENGTH', 50));
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 
+
 Route::post('marvel_query', function(Request $request) {
     $data = $request->json()->all();
+
+    // Get sanitized search criteria
+    $character_name = urlencode(mb_substr($data['character_name'], 0, MAX_ARGUMENT_LENGTH));
 
     // This should be extracted into a function for calling Marvel APIs.
     $timestamp = microtime();
@@ -30,12 +38,12 @@ Route::post('marvel_query', function(Request $request) {
 
     $api_hash = md5($timestamp . $pvt_key . $pub_key);
 
-    $query_url = 'http://gateway.marvel.com/v1/public/characters?nameStartsWith=' . $name_search
+    $query_url = 'http://gateway.marvel.com/v1/public/characters?nameStartsWith=' . $character_name
         . '&ts=' . $timestamp . '&apikey=' . $pub_key . '&hash=' . $api_hash;
     $query_response = Http::get($query_url)->json();
 
 
     return response()->json([
-        'hello' => 'world',
+        'results' => $query_response['data']['results'],
     ], 200);
 });
