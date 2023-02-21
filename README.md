@@ -61,10 +61,6 @@ and "MARVEL_PVT_API_KEY=[Personal/Project Private Marvel API Key]to ".env".
 To prevent GET requests from becoming unwieldy (and to prevent buffer attacks), a cap is placed on search terms.
 This cap is set in ".env" via "MAX_ARGUMENT_LENGTH" and the default is 50.
 
-
-I'm thinking of using Vue.js for this project, although I may decide to just stick with
-vanilla JavaScript.
-
 To install Vue.js (via this tutorial)[https://techvblogs.com/blog/how-to-install-vue3-laravel-9]), add
 the changes to the various files described in the tutorial, and then run:
 
@@ -75,3 +71,13 @@ the changes to the various files described in the tutorial, and then run:
     npm run dev
     nmp run watch
 ```
+
+
+TODO Wishlist
+=============
+
+ * Add a way to mark favorites
+ * Add multiple fields to search by (eg by comic, story, event, etc)
+ * Add Series, Stories, and other Character information to display
+
+

@@ -13,17 +13,26 @@
 
         <div v-if="character_name">&nbsp; &nbsp; &nbsp; &nbsp; Searching for Character {{ character_name }} -- search-count {{ search_count }}</div><br /><br />
 
-        <div v-if="query_results">Query Results:  {{ query_results }}</div>
+        <!-- div v-if="query_results">Query Results:  {{ query_results }}</div -->
+
+        <div v-if="query_results">
+            <ul>
+                <li v-for="character in query_results" :key="character.id">
+                    <input type="checkbox" @input="toggleFavorite(character.id)"/>
+                    <MarvelCharacter :character="character"/>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
 <script>
-    // import MarvelousRecord from './MarvelousRecord.vue'
+    import MarvelCharacter from './MarvelCharacter.vue'
 
     export default {
-        // components: {
-        //   NpiRecord
-        // },
+        components: {
+            MarvelCharacter,
+        },
         data() {
           return {
             character_name : '',
