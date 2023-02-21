@@ -46,10 +46,24 @@ To install Laravel 8 and create a project:
     # This should output something like:  "Laravel Framework 9"
 ```
 
+Route API calls are made via API routes, found in "assessment-app/routes/api.php".  These routes
+include:
+
+    * GET http://127.0.0.1:8000/marvel_query
+
+They are displayed by:
+
+    * resources/js/components/MarvelousQueryForm.vue
+
+To activate the backend API, it is necessary to add "MARVEL_PUB_API_KEY=[Personal/Project Public Marvel API Key]"
+and "MARVEL_PVT_API_KEY=[Personal/Project Private Marvel API Key]to ".env"
+
+
 I'm thinking of using Vue.js for this project, although I may decide to just stick with
 vanilla JavaScript.
 
-To install Vue.js ()(via this tutorial)[https://techvblogs.com/blog/how-to-install-vue3-laravel-9]):
+To install Vue.js (via this tutorial)[https://techvblogs.com/blog/how-to-install-vue3-laravel-9]), add
+the changes to the various files described in the tutorial, and then run:
 
 ```bash
     # In project directory:
