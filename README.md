@@ -77,7 +77,12 @@ TODO Wishlist
 =============
 
  * Add a way to mark favorites
+   - Make sure that favorites aren't duplicated when they are in the search results
+   - Make sure favorites boxes are checked if they are already chosen
+   - Consider adding favorites to a database or cookies for persistence
  * Add multiple fields to search by (eg by comic, story, event, etc)
  * Add Series, Stories, and other Character information to display
+ * Factor out the API function into a separate file, to make it easier to add API functionality
+ * Add tests for API endpoints and UI components
 
 

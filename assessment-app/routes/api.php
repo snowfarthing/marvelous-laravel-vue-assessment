@@ -38,12 +38,24 @@ Route::post('marvel_query', function(Request $request) {
 
     $api_hash = md5($timestamp . $pvt_key . $pub_key);
 
-    $query_url = 'http://gateway.marvel.com/v1/public/characters?nameStartsWith=' . $character_name
-        . '&ts=' . $timestamp . '&apikey=' . $pub_key . '&hash=' . $api_hash;
-    $query_response = Http::get($query_url)->json();
+    // Prepare URL arguments for calling!
+    $url_args = [
+        'ts='. $timestamp,
+        'apikey=' . $pub_key,
+        'hash=' . $api_hash,
+    ];
 
+    if ($character_name) {
+        $url_args[] = 'nameStartsWith=' . $character_name;
+    }
+
+    $url_arg_str = join('&', $url_args);
+
+    $query_url = 'http://gateway.marvel.com/v1/public/characters?' . $url_arg_str;
+    $query_response = Http::get($query_url)->json();
 
     return response()->json([
         'results' => $query_response['data']['results'],
     ], 200);
+
 });
